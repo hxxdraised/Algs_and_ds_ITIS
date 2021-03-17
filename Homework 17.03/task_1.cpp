@@ -7,7 +7,7 @@ struct Node
     Node *next;
 };
 
-struct LinkedList
+struct SortedList
 {
     Node *pHead = new Node;
 
@@ -72,7 +72,7 @@ struct LinkedList
 
 int main()
 {
-    LinkedList *list = new LinkedList;
+    SortedList *list = new SortedList;
 
     list->add(20);
     list->add(10);
