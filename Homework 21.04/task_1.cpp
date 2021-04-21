@@ -2,31 +2,31 @@
 #include <string>
 using namespace std;
 
-int binSearch(int arr[], int left, int right, int key)
+int binarySearch(int a[], int fromIndex, int toIndex, int key, bool last)
 {
-    int midd = 0;
-    while (1)
+    int low = fromIndex;
+    int high = toIndex - 1;
+
+    while (low <= high)
     {
-        midd = (left + right) / 2;
+        int mid = (low + high) >> 1;
+        int midVal = a[mid];
 
-        if (key < arr[midd])
-            right = midd - 1;
-        else if (key > arr[midd])
-            left = midd + 1;
-        else
-            return midd;
-
-        if (left > right)
-            return -1;
+        if (midVal < key || (last && midVal == key))
+            low = mid + 1;
+        else if (midVal > key || (!last && midVal == key))
+            high = mid - 1;
     }
+    return last ? high : low;
 }
 
 int main()
 {
     int size;
     int array[size];
-    int key = 0;
-    int index = 0;
+    int key;
+    int indexf = 0;
+    int indexl = 0;
     string rawArr;
 
     cout << "Write array: ";
@@ -39,14 +39,18 @@ int main()
     }
     for (int i = 0; i < size; i++)
         cout << array[i] << " | ";
-
+    cout << "size: " << size;
     cout << "\nWrite number: ";
     cin >> key;
 
-    index = binSearch(array, 0, size, key);
+    indexf = binarySearch(array, 0, size, key, false);
+    indexl = binarySearch(array, 0, size, key, true);
 
-    if (index >= 0)
-        cout << "index: " << index << "\n\n";
+    if (indexf >= 0)
+    {
+        cout << "first index: " << indexf << endl;
+        cout << "last index: " << indexl << endl;
+    }
     else
         cout << "No such number in array\n\n";
 
