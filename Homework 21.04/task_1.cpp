@@ -25,8 +25,8 @@ int main()
     int size;
     int array[size];
     int key;
-    int indexf = 0;
-    int indexl = 0;
+    int indexf;
+    int indexl;
     string rawArr;
 
     cout << "Write array: ";
@@ -44,7 +44,8 @@ int main()
     cin >> key;
 
     indexf = binarySearch(array, 0, size, key, false);
-    indexl = binarySearch(array, 0, size, key, true);
+    indexf = (array[indexf] == key) ? indexf : -1;
+    indexl = (indexf == -1) ? -1 :binarySearch(array, 0, size, key, true);
 
     if (indexf >= 0)
     {
