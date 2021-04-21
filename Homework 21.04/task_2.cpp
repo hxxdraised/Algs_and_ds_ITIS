@@ -48,9 +48,7 @@ int main()
     index = (array[index] == key) ? index : -1;
 
     if (index >= 0)
-    {
         cout << "Number exist in matrix(index: " << index << ")" << endl;
-    }
     else
         cout << "No such number in matrix" << endl;
 
