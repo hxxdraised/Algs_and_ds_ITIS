@@ -28,7 +28,7 @@ bool cyclic(int v, int &cycle_st, vector<int> *graph, vector<int> &color)
 
 void dfs(int v, vector<int> *graph, vector<bool> &used, vector<int> &answer)
 {
-    used[v] = true; //указываем, что использовали данную вершину
+    used[v] = true; // указываем, что использовали данную вершину
     for (int i = 0; i < graph[v].size(); i++)
     {
         int to = graph[v][i]; // по списку проходим по всем вершинам, к которым можно пройти от вершины v
@@ -38,7 +38,7 @@ void dfs(int v, vector<int> *graph, vector<bool> &used, vector<int> &answer)
     answer.push_back(v + 1); // заносим вершину в вектор, хранящий результат
 }
 
-void topological_sort(int n, vector<int> *graph, vector<bool> &used, vector<int> &answer)
+void topologicalSort(int n, vector<int> *graph, vector<bool> &used, vector<int> &answer)
 {
     for (int i = 0; i < n; i++) // указываем, что ни одна вершина не была использована
         used[i] = false;
@@ -66,7 +66,7 @@ int main()
     }
 
     cout << "----- GRAPH -----" << endl;
-    for (int i = 0; i < m; i++)
+    for (int i = 0; i < n; i++)
     {
         cout << i + 1 << ": ";
         for (int j = 0; j < graph[i].size(); j++)
@@ -86,7 +86,7 @@ int main()
     }
     else
     {
-        topological_sort(n, graph, used, answer);
+        topologicalSort(n, graph, used, answer);
         for (int i = 0; i < answer.size(); i++)
         {
             cout << answer[i] << " ";
